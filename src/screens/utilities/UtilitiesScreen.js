@@ -11,18 +11,19 @@ export default function UtilitiesScreen() {
     const words = content.split(' ')
 
     return (
-        <View style={{flexDirection: "row"}}>
-            <TextTranslate content={content} styleView={styles.view} styleText={styles.text}/>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <TextTranslate content={content} styleView={styles.view} styleText={styles.text} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    text:{
-        fontSize:20,
-        color:'green'
+    text: {
+        fontSize: 20,
+        color: 'black'
     },
-    view:{
-        paddingHorizontal:20
+    view: {
+        paddingHorizontal: 20,
+        marginTop: 20
     }
 })

@@ -2,6 +2,11 @@ import React, { useRef, useState } from 'react'
 import { View, Text, Dimensions, Alert, TouchableOpacity } from 'react-native'
 import Modal from 'react-native-modal';
 
+function convertText(word){
+    let res = word.replace(/[- #*;,.<>\{\}\[\]\\\/]/gi, '');
+    return res.toLowerCase();
+}
+
 const TextTranslate = (props) => {
     const myText = useRef()
     const [isVisible, setisVisible] = useState(false)
@@ -57,7 +62,7 @@ const TextTranslate = (props) => {
                         padding: 20,
                         alignSelf: 'center',
                     }}>
-                    <Text>Tra cứu từ <Text style={{color:'blue'}}>{searchWord}</Text></Text>
+                    <Text>Tra cứu từ <Text style={{color:'blue'}}>{convertText(searchWord)}</Text></Text>
                 </View>
             </Modal>
         </View>
