@@ -15,8 +15,7 @@ function Details({ route, navigation }) {
                 title="Go to Details... again"
                 onPress={() => navigation.push('Details')}
             />
-            {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
-            <Button title="Go to Setting" onPress={() => navigation.navigate('Settings')} />
+            <Button title="Go back" onPress={() => navigation.goBack()} />
             <Button
                 title="Go back to first screen in stack"
                 onPress={() => navigation.popToTop()}

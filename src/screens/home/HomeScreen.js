@@ -11,7 +11,7 @@ function HomeScreen({ navigation }) {
             />
             <Button
                 title="Go to AppOrther"
-                onPress={() => navigation.navigate('AppOrther')}
+                onPress={() => navigation.navigate('AppOther')}
             />
         </View>
     );

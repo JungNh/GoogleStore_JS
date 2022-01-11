@@ -6,11 +6,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeScreen from './src/screens/home/HomeScreen'
 import DetailsScreen from './src/screens/DetailsScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
+import SettingsScreen from './src/screens/shop/ShopScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import UtilitiesScreen from './src/screens/utilities/UtilitiesScreen';
 import FilmsScreen from './src/screens/film/FilmsScreen';
 import BooksScreen from './src/screens/book/BooksScreen';
+import AppOther from './AppOther';
 
 const PRIMARY_COLOR = '#00885c';
 const GRAY_COLOR = '#646567';
@@ -26,7 +27,7 @@ function Root() {
           backgroundColor: 'white',
           height:100
         },
-        headerTintColor: PRIMARY_COLOR,
+        // headerTintColor: PRIMARY_COLOR,
         headerTitleStyle: {
           fontWeight: 'bold',
         },
@@ -44,6 +45,7 @@ function Root() {
           //   ),
           // }}
         />
+         <Stack.Screen name="AppOther" component={AppOther}/>
         <Stack.Screen name="Details" component={DetailsScreen}
           options={({ route }) => ({
             title: route.params?.post,
