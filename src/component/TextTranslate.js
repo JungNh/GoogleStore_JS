@@ -1,5 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { View, Text, Dimensions, Alert, TouchableOpacity, StyleSheet } from 'react-native'
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet
+} from 'react-native'
 import Modal from 'react-native-modal';
 
 function convertText(word) {
@@ -19,11 +24,17 @@ const TextTranslate = (props) => {
 
     return (
         <>
-            <View style={[{ flexDirection: "row" }, styleView]}>
+            <TouchableOpacity
+                style={[{ flexDirection: "row" }, styleView]}
+                activeOpacity={1}
+                onPress={() => {
+                    setTextIndex(-1)
+
+                }}>
                 <Text>
                     {words.map((word, index) => (
                         <View key={index} style={{
-                            backgroundColor: textIndex == index ? '#00885c' : '#fff',
+                            // backgroundColor: textIndex == index ? '#00885c' : '#fff',
                             borderRadius: 5,
                         }}>
                             <Text onPress={() => {
@@ -32,18 +43,26 @@ const TextTranslate = (props) => {
                                 // setisVisible(!isVisible);
                                 setSearchWord(word)
                             }} style={[styleText, {
-                                color: textIndex == index ? '#fff' : '#000',
+                                color: textIndex == index ? '#00885c' : '#000',
                                 textAlign: 'center'
                             }]}>{word} </Text>
-                            {/* {textIndex == index &&
-                                <TouchableOpacity style={{
-                                    padding: 10,
-                                    borderRadius: 10,
-                                    position: 'absolute',
-                                    backgroundColor: '#00885c',
-                                    zIndex: 1,
-                                    top: 24
-                                }}><Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{word}</Text></TouchableOpacity>} */}
+                            {textIndex == index &&
+                                <View style={styles.view_tran}>
+                                    <TouchableOpacity
+                                        style={[styles.buttonTran, styles.letf_tran]}
+                                        onPress={() => {
+                                            setisVisible(true);
+                                            setTextIndex(-1)
+                                        }}
+                                        activeOpacity={0.5}><Text style={styles.text_button}>Anh - Anh</Text></TouchableOpacity>
+                                    <TouchableOpacity
+                                        style={[styles.buttonTran, styles.right_tran]}
+                                        onPress={() => {
+                                            setisVisible(true);
+                                            setTextIndex(-1)
+                                        }}
+                                        activeOpacity={0.5}><Text style={styles.text_button}>Anh - Viet</Text></TouchableOpacity>
+                                </View>}
                         </View>
                     ))}
                 </Text>
@@ -69,17 +88,9 @@ const TextTranslate = (props) => {
                         <Text>Tra cứu từ <Text style={{ color: 'blue' }}>{convertText(searchWord)}</Text></Text>
                     </View>
                 </Modal>
-            </View>
-            {textIndex >= 0 && <View style={{ flexDirection: 'row', width: '40%', alignSelf: 'center' }}>
-                <TouchableOpacity style={styles.buttonTran} onPress={() => {
-                    setisVisible(true);
-                    setTextIndex(-1)
-                }}><Text>Anh - Anh</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.buttonTran} onPress={() => {
-                    setisVisible(true);
-                    setTextIndex(-1)
-                }}><Text>Anh - Viet</Text></TouchableOpacity>
-            </View>}
+            </TouchableOpacity>
+
+
         </>
     )
 }
@@ -88,11 +99,42 @@ export default TextTranslate;
 
 const styles = StyleSheet.create({
     buttonTran: {
-        height: 30,
+        // height: 30,
         flex: 1,
         backgroundColor: '#00885c',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 5
+        padding: 8, shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+
+    },
+    letf_tran: {
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5,
+        borderRightWidth: 2,
+        borderColor: '#fff',
+
+    },
+    right_tran: {
+        borderTopRightRadius: 5,
+        borderBottomRightRadius: 5,
+    },
+    text_button: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    view_tran:{ 
+        flexDirection: 'row', 
+        alignSelf: 'center', 
+        position: 'absolute', 
+        bottom: 24 ,
     }
 })

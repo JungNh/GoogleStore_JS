@@ -12,7 +12,7 @@ import ShopScreen from './src/screens/shop/ShopScreen';
 import ShortVideoScreen from './src/screens/short/ShortVideoScreen';
 import UserScreen from './src/screens//use/UserScreen';
 
-const PRIMARY_COLOR = '#000';
+const PRIMARY_COLOR = '#ef001d';
 const GRAY_COLOR = '#646567';
 
 const Tab = createBottomTabNavigator();

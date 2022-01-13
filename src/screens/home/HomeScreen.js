@@ -3,6 +3,7 @@ import { Button, View, Text, TouchableOpacity, Dimensions, StatusBar } from 'rea
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header, Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { TextInput } from 'react-native-paper';
 
 const { width, height } = Dimensions.get('window')
 const PRIMARY_COLOR = '#00885c';

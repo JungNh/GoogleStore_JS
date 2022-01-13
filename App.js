@@ -12,6 +12,8 @@ import UtilitiesScreen from './src/screens/utilities/UtilitiesScreen';
 import FilmsScreen from './src/screens/film/FilmsScreen';
 import BooksScreen from './src/screens/book/BooksScreen';
 import AppOther from './AppOther';
+import { Provider } from 'react-redux'
+import { Store } from './src/redux/store';
 const { width, height } = Dimensions.get('window')
 const PRIMARY_COLOR = '#00885c';
 const GRAY_COLOR = '#646567';
@@ -20,46 +22,48 @@ const Stack = createNativeStackNavigator();
 
 function Root() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="App"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: 'white',
-            height: 100
-          },
-          headerTintColor: PRIMARY_COLOR,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-        screenOptions={{
-          headerShown: false
-        }}
-      >
-        <Stack.Screen name="BottomBar" component={BottomBar}
-        // options={{
-        //   headerTitle: (props) => (
-        //     <View style={{ width: '90%', alignItems: 'center', marginLeft: -10, borderWidth:0.5, borderRadius:5,  }}>
-        //       <Text>hello</Text>
-        //     </View>
-        //   ),
-
-        // }}
-        />
-        <Stack.Screen name="AppOther" component={AppOther} />
-        <Stack.Screen name="Details" component={DetailsScreen}
-          options={({ route }) => ({
-            title: route.params?.post,
+    <Provider store={Store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="App"
+          screenOptions={{
             headerStyle: {
-              backgroundColor: '#fff',
+              backgroundColor: 'white',
+              height: 100
             },
-            headerTintColor: '#000',
+            headerTintColor: PRIMARY_COLOR,
             headerTitleStyle: {
               fontWeight: 'bold',
             },
-          })} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          }}
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Stack.Screen name="BottomBar" component={BottomBar}
+          // options={{
+          //   headerTitle: (props) => (
+          //     <View style={{ width: '90%', alignItems: 'center', marginLeft: -10, borderWidth:0.5, borderRadius:5,  }}>
+          //       <Text>hello</Text>
+          //     </View>
+          //   ),
+
+          // }}
+          />
+          <Stack.Screen name="AppOther" component={AppOther} />
+          <Stack.Screen name="Details" component={DetailsScreen}
+            options={({ route }) => ({
+              title: route.params?.post,
+              headerStyle: {
+                backgroundColor: '#fff',
+              },
+              headerTintColor: '#000',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            })} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
