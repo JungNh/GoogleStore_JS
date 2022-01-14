@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import UtilitiesScreen from './src/screens/utilities/UtilitiesScreen';
 import FilmsScreen from './src/screens/film/FilmsScreen';
 import BooksScreen from './src/screens/book/BooksScreen';
+import LoginScreen from './src/screens/auth/LoginSreen'
 import AppOther from './AppOther';
 import { Provider } from 'react-redux'
 import { Store } from './src/redux/store';
@@ -24,21 +25,22 @@ function Root() {
   return (
     <Provider store={Store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="App"
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: 'white',
-              height: 100
-            },
-            headerTintColor: PRIMARY_COLOR,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}
+        <Stack.Navigator initialRouteName="BottomBar"
+          // screenOptions={{
+          //   headerStyle: {
+          //     backgroundColor: 'white',
+          //     height: 100
+          //   },
+          //   headerTintColor: PRIMARY_COLOR,
+          //   headerTitleStyle: {
+          //     fontWeight: 'bold',
+          //   },
+          // }}
           screenOptions={{
             headerShown: false
           }}
         >
+          <Stack.Screen name="Auth" component={LoginScreen} />
           <Stack.Screen name="BottomBar" component={BottomBar}
           // options={{
           //   headerTitle: (props) => (
@@ -160,3 +162,5 @@ function BottomBar() {
 
 
 export default Root;
+
+

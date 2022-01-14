@@ -7,7 +7,7 @@ export default function ShortVideoScreen() {
     const user = useSelector(state => state.userReducer)
     const dispatch = useDispatch()
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, alignItems:'center',justifyContent:'center' }}>
             <KeyboardAvoidingView style={{ flex: 1 }}
                 behavior="padding"
                 enabled >
