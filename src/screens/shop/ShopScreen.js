@@ -55,7 +55,7 @@ const ShopScreen = () => {
                             </View> */}
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={styles.post_title}>{item.rating}</Text>
-                                {RATING_DATA.map((item, index) => (<AntDesign name={'star'} size={12} color={(item.rating / 2 > index + 1) ? 'tomato' : 'gray'} />))}
+                                {RATING_DATA.map((child, index) => (<AntDesign name={'star'} size={12} color={(item.rating / 2 > child) ? 'tomato' : 'gray'} />))}
                             </View>
                         </TouchableOpacity>
                     )}
