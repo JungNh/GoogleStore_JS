@@ -25,7 +25,7 @@ function Root() {
   return (
     <Provider store={Store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="BottomBar"
+        <Stack.Navigator initialRouteName="Auth"
           // screenOptions={{
           //   headerStyle: {
           //     backgroundColor: 'white',
@@ -40,7 +40,7 @@ function Root() {
             headerShown: false
           }}
         >
-          <Stack.Screen name="Auth" component={LoginScreen} />
+          {/* <Stack.Screen name="Auth" component={LoginScreen} /> */}
           <Stack.Screen name="BottomBar" component={BottomBar}
           // options={{
           //   headerTitle: (props) => (
