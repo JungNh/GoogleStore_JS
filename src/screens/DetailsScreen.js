@@ -26,13 +26,13 @@
 
 // export default Details
 
-import { View, Text, Animated, StyleSheet, Dimensions, Easing, Image } from 'react-native'
+import { View, Text, Animated, StyleSheet, Dimensions, Easing, Image, Button } from 'react-native'
 import React from 'react'
 import { useEffect } from 'react'
 
 const { width } = Dimensions.get('window')
 
-export default function BooksScreen() {
+export default function BooksScreen({ navigation }) {
   let drop = new Animated.Value(1)
   let moveLeft = new Animated.Value(20)
   useEffect(() => {
@@ -55,13 +55,13 @@ export default function BooksScreen() {
         Animated.timing(ball, {
           toValue: { x: 20, y: 40 },
           duration: 500,
-          delay: 1500,
+          delay: 500,
           useNativeDriver: false
         }),
         Animated.timing(size, {
           toValue: 1,
           duration: 500,
-          delay: 1000,
+          delay: 500,
           easing: Easing.ease,
           useNativeDriver: false
         })
@@ -70,7 +70,7 @@ export default function BooksScreen() {
   }, []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center' }}>
       <Animated.Image style={[{ height: 100, width: 100, borderRadius: 50 }, ball.getLayout(), {
         transform: [
           {
@@ -82,6 +82,17 @@ export default function BooksScreen() {
         resizeMode={'cover'}
       >
       </Animated.Image>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Button
+          title="Go to Detail"
+          onPress={() => navigation.push('Details')}
+          style={{}}
+        />
+        <Button
+          title="Go back to first screen in stack"
+          onPress={() => navigation.popToTop()}
+        />
+      </View>
     </View>
 
   )
