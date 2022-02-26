@@ -47,7 +47,6 @@ const { width, height } = Dimensions.get('screen')
 
 const App = () => {
   const pan = useRef(new Animated.ValueXY({ x: width / 2 - 75, y: -height / 2 + 100 })).current;
-
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,

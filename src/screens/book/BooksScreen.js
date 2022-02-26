@@ -50,7 +50,7 @@ export default function BooksScreen() {
           }
         ]
       }]}
-        source={require('../../assets/img/congratulations.gif')}
+        source={require('../../assets/img/nu_sinh.png')}
         resizeMode={'cover'}
       >
       </Animated.Image>
