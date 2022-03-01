@@ -129,7 +129,7 @@ const ImageScreen = () => {
                             </View> */}
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text style={styles.post_title}>{item.rating}</Text>
-                  {RATING_DATA.map((child, index) => (<AntDesign name={'star'} size={12} color={(item.rating / 2 > child) ? 'tomato' : 'gray'} />))}
+                  {RATING_DATA.map((child, index) => (<AntDesign name={'star'} size={12} color={(item.rating / 2 > child) ? 'tomato' : 'gray'} key={index} />))}
                 </View>
               </TouchableOpacity>
             )}
