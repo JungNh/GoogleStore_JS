@@ -38,10 +38,8 @@ const ImageScreen = () => {
   const getData = async () => {
     try {
       const response = await getMovies();
-      console.log('DATA', response)
       setData(response);
     } catch (error) {
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -97,7 +95,15 @@ const ImageScreen = () => {
             style={{
               zIndex: 1,
               position: 'absolute',
-              transform: [{ translateX: pan.x }, { translateY: pan.y }]
+              transform: [{ translateX: pan.x }, { translateY: pan.y }],
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
             }}
             {...panResponder.panHandlers}
           >

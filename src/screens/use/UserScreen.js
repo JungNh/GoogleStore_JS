@@ -40,66 +40,42 @@
 // }
 
 
-import React, { useRef } from "react";
-import { Animated, View, StyleSheet, PanResponder, Text, Dimensions } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { VictoryBar, VictoryChart, VictoryLine, VictoryTheme } from "victory-native";
 
-const { width, height } = Dimensions.get('screen')
+const data = [
+  { quarter: "T2", earnings: 1 },
+  { quarter: "T3", earnings: 5 },
+  { quarter: 'T4', earnings: 3 },
+  { quarter: "T5", earnings: 3 },
+  { quarter: "T6", earnings: 2 },
+  { quarter: 'T7', earnings: 3 },
+  { quarter: "CN", earnings: 1 }
+];
 
-const App = () => {
-  const pan = useRef(new Animated.ValueXY({ x: width / 2 - 75, y: -height / 2 + 100 })).current;
-  const panResponder = useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => {
-        pan.setOffset({
-          x: pan.x._value,
-          y: pan.y._value
-        });
-      },
-      onPanResponderMove: Animated.event(
-        [
-          null,
-          { dx: pan.x, dy: pan.y }
-        ]
-      ),
-      onPanResponderRelease: () => {
-        pan.flattenOffset();
-      }
-    })
-  ).current;
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Drag this box!</Text>
-      <Animated.View
-        style={{
-          transform: [{ translateX: pan.x }, { translateY: pan.y }]
-        }}
-        {...panResponder.panHandlers}
-      >
-        <View style={styles.box} />
-      </Animated.View>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <VictoryChart width={350} theme={VictoryTheme.material} height={200}>
+          <VictoryLine data={data} x="quarter" y="earnings" style={{
+            data: {
+              stroke: 'red',
+              strokeWidth: 2,
+            }
+          }} />
+        </VictoryChart>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "center"
-  },
-  titleText: {
-    fontSize: 14,
-    lineHeight: 24,
-    fontWeight: "bold"
-  },
-  box: {
-    height: 150,
-    width: 150,
-    backgroundColor: "blue",
-    borderRadius: 5
+    backgroundColor: "#f5fcff"
   }
 });
-
-export default App;
