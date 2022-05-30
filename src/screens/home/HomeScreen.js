@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TouchableOpacity, Dimensions, StatusBar } from 'react-native';
+import { Button, View, Text, TouchableOpacity, Dimensions, StatusBar, Modal } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header, Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';

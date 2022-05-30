@@ -41,31 +41,199 @@
 
 
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import FastImage from "react-native-fast-image";
 import { VictoryBar, VictoryChart, VictoryLine, VictoryTheme } from "victory-native";
 
 const data = [
-  { quarter: "T2", earnings: 1 },
-  { quarter: "T3", earnings: 5 },
-  { quarter: 'T4', earnings: 3 },
-  { quarter: "T5", earnings: 3 },
-  { quarter: "T6", earnings: 2 },
-  { quarter: 'T7', earnings: 3 },
-  { quarter: "CN", earnings: 1 }
+  { quarter: "T2", earnings: 194 },
+  { quarter: "T3", earnings: 0 },
+  { quarter: 'T4', earnings: 0 },
+  { quarter: "T5", earnings: 0 },
+  { quarter: "T6", earnings: 0 },
+  { quarter: 'T7', earnings: 0 },
+  { quarter: "CN", earnings: 0 }
 ];
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <VictoryChart width={350} theme={VictoryTheme.material} height={200}>
-          <VictoryLine data={data} x="quarter" y="earnings" style={{
-            data: {
-              stroke: 'red',
-              strokeWidth: 2,
-            }
-          }} />
-        </VictoryChart>
+        <View style={styles.chart_bg}>
+          <VictoryChart width={350} theme={VictoryTheme.material} height={200}>
+            <VictoryLine data={data} x="quarter" y="earnings" style={{
+              data: {
+                stroke: 'red',
+                strokeWidth: 2,
+              }
+            }} />
+          </VictoryChart>
+        </View>
+        <View style={{
+          width: '90%',
+          flexDirection: 'row',
+          marginTop: 10,
+          padding: 15,
+          backgroundColor: 'white',
+          borderRadius: 10,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+          justifyContent: 'space-between',
+          alignItems:'center'
+        }}>
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <View style={{
+              marginRight:10, 
+              width:50,
+              height:50,
+              borderWidth:10,
+              borderLeftColor:'#FDB561',
+              borderBottomColor:'#FDB561',
+              borderRightColor:'#e3e3e3',
+              borderTopColor:'#e3e3e3',
+              borderRadius:25,
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <FastImage source={require('../../assets/img/grammar.png')} style={{width:40,height:40}}/>
+              <View
+                style={{
+                  width:25,
+                  height:25,
+                  borderRadius:18,
+                  borderWidth:1,
+                  borderColor:'white',
+                  position:'absolute',
+                  backgroundColor:'#FDB561',
+                  bottom:-15,
+                  right:-12,
+                  alignItems:'center',
+                  justifyContent:'center'
+                }}
+              >
+                <Text style={{fontSize:10, fontWeight:'bold'}}>50%</Text>
+              </View>
+            </View>
+            <Text>Vocabulary</Text>
+          </View>
+          <Text>300/300</Text>
+        </View>
+        <View style={{
+          width: '90%',
+          flexDirection: 'row',
+          marginTop: 10,
+          padding: 15,
+          backgroundColor: 'white',
+          borderRadius: 10,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+          justifyContent: 'space-between',
+          alignItems:'center'
+        }}>
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <View style={{
+              marginRight:10, 
+              width:50,
+              height:50,
+              borderWidth:10,
+              borderLeftColor:'#FDB561',
+              borderBottomColor:'#FDB561',
+              borderRightColor:'#e3e3e3',
+              borderTopColor:'#e3e3e3',
+              borderRadius:25,
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <FastImage source={require('../../assets/img/grammar.png')} style={{width:40,height:40}}/>
+              <View
+                style={{
+                  width:25,
+                  height:25,
+                  borderRadius:18,
+                  borderWidth:1,
+                  borderColor:'white',
+                  position:'absolute',
+                  backgroundColor:'#FDB561',
+                  bottom:-15,
+                  right:-12,
+                  alignItems:'center',
+                  justifyContent:'center'
+                }}
+              >
+                <Text style={{fontSize:10, fontWeight:'bold'}}>50%</Text>
+              </View>
+            </View>
+            <Text>Vocabulary</Text>
+          </View>
+          <Text>300/300</Text>
+        </View>
+        <View style={{
+          width: '90%',
+          flexDirection: 'row',
+          marginTop: 10,
+          padding: 15,
+          backgroundColor: 'white',
+          borderRadius: 10,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5,
+          justifyContent: 'space-between',
+          alignItems:'center'
+        }}>
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <View style={{
+              marginRight:10, 
+              width:50,
+              height:50,
+              borderWidth:10,
+              borderLeftColor:'#FDB561',
+              borderBottomColor:'#FDB561',
+              borderRightColor:'#e3e3e3',
+              borderTopColor:'#e3e3e3',
+              borderRadius:25,
+              alignItems:'center',
+              justifyContent:'center'
+              }}>
+              <FastImage source={require('../../assets/img/grammar.png')} style={{width:40,height:40}}/>
+              <View
+                style={{
+                  width:25,
+                  height:25,
+                  borderRadius:18,
+                  borderWidth:1,
+                  borderColor:'white',
+                  position:'absolute',
+                  backgroundColor:'#FDB561',
+                  bottom:-15,
+                  right:-12,
+                  alignItems:'center',
+                  justifyContent:'center'
+                }}
+              >
+                <Text style={{fontSize:10, fontWeight:'bold'}}>100%</Text>
+              </View>
+            </View>
+            <Text>Vocabulary</Text>
+          </View>
+          <Text>300/300</Text>
+        </View>
       </View>
     );
   }
@@ -74,8 +242,21 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f5fcff"
-  }
+  },
+  chart_bg: {
+    backgroundColor: 'white',
+    padding: 5,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
 });
