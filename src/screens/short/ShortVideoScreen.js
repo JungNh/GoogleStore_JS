@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Animated,
   PanResponder,
@@ -9,7 +9,8 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  BackHandler
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { getMovies } from '../../../api_movies'
@@ -17,6 +18,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import FastImage from 'react-native-fast-image';
 import Modal from 'react-native-modal';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { Header } from 'react-native-elements';
 
 const { width, height } = Dimensions.get('screen');
 const iconSize = 70;
@@ -34,6 +38,7 @@ const ImageScreen = () => {
   const [data, setData] = useState([]);
   const [isVisible, setisVisible] = useState(false);
   const [itemChoice, setitemChoice] = useState();
+  const dispatch = useDispatch();
 
   const getData = async () => {
     try {
@@ -48,6 +53,20 @@ const ImageScreen = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      BackHandler.addEventListener('hardwareBackPress', backAction);
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', backAction);
+      };
+    }, []),
+  );
+
+  const backAction = useCallback(() => {
+    console.log('hello')
+    return null;
+  }, [dispatch]);
 
   const pan = useRef(new Animated.ValueXY({ x: spaceWidth, y: -spaceHeight })).current;
 
@@ -88,7 +107,11 @@ const ImageScreen = () => {
   return (
     <View style={styles.mainView}
       onStartShouldSetResponderCapture={() => { return false }}>
-
+      {/* <Header
+        leftComponent={{ icon: 'menu', color: '#fff' }}
+        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+        rightComponent={{ icon: 'home', color: '#fff' }}
+      /> */}
       {isLoading ? <ActivityIndicator /> : (
         <>
           <Animated.View

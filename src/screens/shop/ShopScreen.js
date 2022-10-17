@@ -1,5 +1,5 @@
 // import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
-// import React from 'react'
+// import React, { version } from 'react'
 // import LinearGradient from 'react-native-linear-gradient';
 // import {
 //   LineChart,
@@ -12,10 +12,10 @@
 // const screenWidth = Dimensions.get("window").width;
 // export default function ShopScreen() {
 //   const data = {
-//     labels: ["T2", "T3", "T4", "T5", "T6", "T7","CN"],
+//     labels: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
 //     datasets: [
 //       {
-//         data: [20, 45, 28, 80, 100, 43,200],
+//         data: [250, 45, 28, 80, 100, 43, 200],
 //         color: (opacity = 1) => `rgba(255, 0, 0)`, // optional
 //         strokeWidth: 2 // optional
 //       }
@@ -30,11 +30,12 @@
 //     color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
 //     strokeWidth: 2, // optional, default 3
 //     barPercentage: 0.5,
-//     useShadowColorFromDataset: false // optional
+//     useShadowColorFromDataset: false, // optional
+//     labelColor: (opacity = 0) => `rgba(255, 0, 0, ${opacity})`,
 //   };
-  
+
 //   return (
-//     <View style={{ flex: 1 }}>
+//     <View style={{ flex: 1, alignItems: 'center' }}>
 //       {/* <TouchableOpacity>
 //         <LinearGradient colors={['#3CABE9', '#2E81FF']}
 //           start={{ x: 0, y: 1 }}
@@ -43,13 +44,14 @@
 //           <Text>Unit 9: Lớp 10</Text>
 //         </LinearGradient>
 //       </TouchableOpacity> */}
-//       <View>
-//         <Text>Bezier Line Chart</Text>
+//       <View style={{ backgroundColor: 'white', paddingVertical: 20, borderRadius: 10 }}>
+//         {/* <Text>Bezier Line Chart</Text> */}
 //         <LineChart
 //           data={data}
-//           width={screenWidth}
+//           width={screenWidth * 0.9}
 //           height={220}
 //           chartConfig={chartConfig}
+//         // style={{backgroundColor:'red'}}
 //         />
 //       </View>
 //     </View>
@@ -76,10 +78,10 @@
 
 // Scroll to a Specific Item in ScrollView List View
 // https://aboutreact.com/scroll_to_a_specific_item_in_scrollview_list_view/
- 
+
 // import React in our code
-import React, {useState, useEffect} from 'react';
- 
+import React, { useState, useEffect } from 'react';
+
 // import all the components we are going to use
 import {
   SafeAreaView,
@@ -90,13 +92,13 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
- 
+
 const App = () => {
   const [dataSource, setDataSource] = useState([]);
-  const [scrollToIndex, setScrollToIndex] = useState(0);
+  const [scrollToIndex, setScrollToIndex] = useState(50);
   const [dataSourceCords, setDataSourceCords] = useState([]);
   const [ref, setRef] = useState(null);
- 
+
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
@@ -113,9 +115,15 @@ const App = () => {
   const _handleComplete = () => {
     setTimeout(() => {
       scrollHandler();
-    }, 3000);
+    }, 2000);
   };
- 
+
+  useEffect(() => {
+    if(ref){
+      _handleComplete()
+    }
+  }, [ref]);
+
   const scrollHandler = () => {
     console.log(dataSourceCords.length, scrollToIndex);
     if (dataSourceCords.length > scrollToIndex) {
@@ -128,7 +136,7 @@ const App = () => {
       alert('Out of Max Index');
     }
   };
- 
+
   const ItemView = (item, key) => {
     return (
       // Flat List Item
@@ -154,28 +162,28 @@ const App = () => {
       </View>
     );
   };
- 
+
   const ItemSeparatorView = () => {
     return (
       // Flat List Item Separator
       <View style={styles.itemSeparatorStyle} />
     );
   };
- 
+
   const getItem = (item) => {
     // Function for click on an item
     alert('Id : ' + item.id + ' Title : ' + item.title);
   };
- 
+
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <TextInput
             value={
               String(
                 scrollToIndex ?
-                scrollToIndex : 0
+                  scrollToIndex : 0
               )
             }
             numericvalue
@@ -184,7 +192,7 @@ const App = () => {
               setScrollToIndex(
                 parseInt(
                   scrollToIndex != '' ?
-                  scrollToIndex : 0
+                    scrollToIndex : 0
                 ),
               );
             }}
@@ -205,13 +213,14 @@ const App = () => {
           ref={(ref) => {
             setRef(ref);
           }}>
+          {/* <View style={{ height: 500, width: '100%', backgroundColor: 'red' }} /> */}
           {dataSource.map(ItemView)}
         </ScrollView>
       </View>
     </SafeAreaView>
   );
 };
- 
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
@@ -242,5 +251,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
- 
+
 export default App;
